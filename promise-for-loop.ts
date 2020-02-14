@@ -13,7 +13,7 @@ const delCheck = async (check : any) {
 // Range function in typescript
 // eg : range(1, 3) ==> [1,2]
 function range(start, end) {
-  return Array(end - start).fill(0).map((_, idx) => start + idx)
+  return Array(end - start).fill().map((_, idx) => start + idx)
 }
 
 // get count of basic tags present & delete them sequentially 
