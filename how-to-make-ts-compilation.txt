@@ -1,0 +1,24 @@
+Use of tsconfig.json 
+*********************
+
+1. indicates the TypeScript Project root directory.
+2. It has root files & compiler options 
+      i) If files & include left unspecified - all files with .ts .d.ts .tsx extension are included ( if 'allowJs == true' then include '.js .jsx' extensions)
+     ii) typeRoots - if mentioned only that packages will be included for compilation else all @types will be visible.
+            eg: for including all packages under typings packages (this will ignore ./node_modules/@types packages)
+                  {
+                    "compilerOptions" : {
+                          "typeRoots" : ["./typings"]
+                    }
+                  }
+    iii) types : only listed elements will be used for compilation
+            eg: to include node, express  ( ./node_modules/@types/node, ./node_modules/@types/express packages will be included, Other packages
+             ./node_modules/@types/* will not be included)
+             
+                  {
+                    "compilerOptions" : {
+                          "types" : ["node", "express"]
+                    }
+                  }
+                  
+          
