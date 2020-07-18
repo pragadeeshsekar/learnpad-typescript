@@ -1,17 +1,26 @@
-Use of tsconfig.json 
-*********************
+tsc - will convert TS to JS (transpiler / source-to-source compiler)
+
+Invoking tsc 
+--> without input files will search for tsconfig.json in current directory & continue upto directory chain
+--> with --parent <to directory of tsconfig.json>/ <to .json file with correct configurations>
+
+
+few tsconfig.json Configuration
+*******************************
 
 1. indicates the TypeScript Project root directory.
 2. It has root files & compiler options 
+3. Root files :
       i) If files & include left unspecified - all files with .ts .d.ts .tsx extension are included ( if 'allowJs == true' then include '.js .jsx' extensions)
-     ii) typeRoots - if mentioned only that packages will be included for compilation else all @types will be visible.
+4. compilerOptions:
+      i) typeRoots - if mentioned only that packages will be included for compilation else all @types will be visible.
             eg: for including all packages under typings packages (this will ignore ./node_modules/@types packages)
                   {
                     "compilerOptions" : {
                           "typeRoots" : ["./typings"]
                     }
                   }
-    iii) types : only listed elements will be used for compilation
+     ii) types : only listed elements will be used for compilation
             eg: to include node, express  ( ./node_modules/@types/node, ./node_modules/@types/express packages will be included, Other packages
              ./node_modules/@types/* will not be included)
              
@@ -20,5 +29,6 @@ Use of tsconfig.json
                           "types" : ["node", "express"]
                     }
                   }
-                  
+    iii) to convert ES6 to ES5 use "target" : "es5" in compilerOptions
+     iv) compileOnSave: IDE to save compiled files               
           
